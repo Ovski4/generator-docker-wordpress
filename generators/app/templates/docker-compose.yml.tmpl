@@ -5,7 +5,7 @@ mysql:
   volumes:
    - /var/docker/mysql/<%= conf.projectName %>:/var/lib/mysql
 app:
-  image: ovski/wordpress-dev:latest
+  image: ovski/wordpress:latest
   volumes:
    - .:/var/www
    - /var/log/docker/nginx/<%= conf.projectName %>:/var/log/nginx
