@@ -1,0 +1,47 @@
+'use strict';
+
+var src              = [],
+    web              = [],
+    theme            = '<%= conf.themeName %>'
+;
+
+web['style']         = "wordpress/wp-content/themes/"+theme;
+src['style']         = "sass/**/*.scss";
+src['view']          = "wordpress/wp-content/themes/"+theme+"/*.php";
+
+var chmod            = require('gulp-chmod'),
+    concat           = require('gulp-concat'),
+    del              = require('del'),
+    gulp             = require('gulp'),
+    minifycss        = require('gulp-minify-css'),
+    sass             = require('gulp-sass'),
+    livereload       = require('gulp-livereload')
+;
+
+// Task to watch files
+gulp.task('watch', ['styles'], function() {
+    livereload.listen();
+    gulp.watch(src['style'], ['styles']);
+    gulp.watch(src['view'], ['views']);
+});
+
+// Task to compile Sass files
+gulp.task('styles', function() {
+    // delete css files
+    del(web['style']+'/*.css');
+    // build css files
+    gulp.src([src['style']])
+        .pipe(sass({ errLogToConsole: true }))
+        .pipe(minifycss({keepSpecialComments: 0}))
+        .pipe(concat({ path: 'style.css'}))
+        .pipe(chmod(775))
+        .pipe(gulp.dest(web['style']))
+        .pipe(livereload())
+    ;
+});
+
+gulp.task('views', function() {
+    gulp.src([src['view']])
+        .pipe(livereload())
+    ;
+});

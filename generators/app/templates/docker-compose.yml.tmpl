@@ -5,7 +5,7 @@ mysql:
   volumes:
    - /var/docker/mysql/<%= conf.projectName %>:/var/lib/mysql
 app:
-  image: ovski/wordpress:latest
+<% if (conf.gulp) { %>  image: ovski/wordpress-dev:latest<% } else { %>  image: ovski/wordpress:latest<% } %>
   volumes:
    - .:/var/www
    - /var/log/docker/nginx/<%= conf.projectName %>:/var/log/nginx
@@ -14,7 +14,7 @@ app:
    - mysql:mysql
   ports:
    - 8073:80
-   - 35729:35729
+<% if (conf.gulp) { %>   - 35729:35729<% } %>
   environment:
    - VIRTUAL_HOST=dev.<%= conf.projectName %>.fr
 adminer:

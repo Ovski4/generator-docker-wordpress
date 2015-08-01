@@ -42,6 +42,12 @@ var questions = {
             name: 'themeName',
             message: 'Your theme name',
             validate: notEmpty
+        },
+        {
+            type: 'confirm',
+            name: 'gulp',
+            message: 'Do you want to work with gulp? (sass & livereload)',
+            default: false
         }
     ]
 };
