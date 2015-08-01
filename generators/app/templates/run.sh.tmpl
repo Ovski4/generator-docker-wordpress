@@ -91,7 +91,6 @@ createELKContainer () {
 
 insertKibanaData () {
     # echo | --> http://stackoverflow.com/questions/6264596/simulating-enter-keypress-in-bash-script
-    echo |docker exec -i elkcontainer bash -c "curl -XPUT 'http://localhost:9200/.kibana/'"
     echo |docker exec -i elkcontainer bash -c "elasticdump --input=/kibana.json --output=http://localhost:9200/.kibana --type=data"
 }
 
