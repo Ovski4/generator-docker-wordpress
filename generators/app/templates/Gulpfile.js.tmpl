@@ -27,8 +27,6 @@ gulp.task('watch', ['styles'], function() {
 
 // Task to compile Sass files
 gulp.task('styles', function() {
-    // delete css files
-    del(web['style']+'/*.css');
     // build css files
     gulp.src([src['style']])
         .pipe(sass({ errLogToConsole: true }))

@@ -25,7 +25,7 @@ templateManager.prototype.copyTemplates = function () {
     this.copyTemplate('theme/style.css.tmpl', themeRoot+'/style.css');
     if (this.conf.gulp == true) {
         this.copyTemplate('Gulpfile.js.tmpl', 'Gulpfile.js');
-        this.copyTemplate('main.scss.tmpl', 'sass/style.css');
+        this.copyTemplate('main.scss.tmpl', 'sass/main.scss');
         this.copyTemplate('package.json.tmpl', 'package.json');
     }
 };

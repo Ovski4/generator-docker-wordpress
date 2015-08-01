@@ -15,19 +15,19 @@ module.exports = generators.Base.extend({
         }.bind(this));
     },
     onInstall: function () {
-        /*var done = this.async();
+        var done = this.async();
         this.extract('https://wordpress.org/latest.tar.gz', '.', function (err) {
             if (err) {
                 console.log(err);
-            } else {*/
+            } else {
                 var tm = new TemplateManager(this, configuration);
                 tm.copyTemplates();
-            /*}
+            }
             done();
-        }.bind(this));*/
+        }.bind(this));
     },
     onEnd: function () {
-        console.log('You should exec in your container and run npm update to finish')
+        console.log('Now you can run ./run.sh, then you should exec in your container and run npm update to finish')
     }
 });
 
