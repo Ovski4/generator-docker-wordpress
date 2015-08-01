@@ -31,3 +31,8 @@ This script will add host entries according to your answers to the generator.
 
 mysql files will be stored in /var/docker/mysql/projectname on your machine  
 elk data is located in /var/docker/elk/projectname on your machine
+
+TODO
+----
+
+Add foundation if "Yes" on prompt (new question)
