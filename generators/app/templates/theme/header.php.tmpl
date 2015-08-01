@@ -1,0 +1,41 @@
+<?php
+/**
+ * The Header for <%= conf.themeName %> theme.
+ *
+ * @package <%= conf.themeName %>
+ */
+?>
+
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+    <head>
+        <meta charset="<?php bloginfo( 'charset' ); ?>" />
+        <title>
+            <?php bloginfo( 'name' ); ?>
+        </title>
+        <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_directory' ); ?>/style.css" />
+        <link rel="icon" type="image/png" href="<?php bloginfo( 'template_directory' ); ?>/images/favicon.ico" />
+
+        <?php
+        /* Always have wp_head() just before the closing </head>
+         * tag of your theme, or you will break many plugins, which
+         * generally use this hook to add elements to <head> such
+         * as styles, scripts, and meta tags.
+         */
+        wp_head();
+        ?>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="<?php bloginfo('url'); ?>">
+                    <?php bloginfo('description'); ?>
+                </a>
+            </h1>
+            <nav>
+                <ul>
+                    <?php wp_list_pages(array('title_li' => "")); ?>
+                </ul>
+            </nav>
+        </header>
+

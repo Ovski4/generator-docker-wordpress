@@ -1,0 +1,38 @@
+<?php
+/**
+ * Functions for the <%= conf.themeName %> theme.
+ *
+ * @package <%= conf.themeName %>
+ */
+
+/**
+ * Load missing_content template.
+ *
+ * Includes the missing_content template for a theme or if a name is specified then a
+ * specialised missing_content will be included.
+ *
+ * For the parameter, if the file is called "missing_content-special.php" then specify
+ * "special".
+ *
+ * @uses locate_template()
+ * @since 1.5.0
+ * @uses do_action() Calls 'get_header' action.
+ *
+ * @param string $name The name of the specialised missing_content.
+ */
+function get_missing_content($name = null)
+{
+    do_action('get_missing_content', $name);
+
+    $templates = array();
+    if (isset($name)) {
+        $templates[] = "missing_content-{$name}.php";
+    }
+
+    $templates[] = 'missing_content.php';
+
+    // Backward compat code will be removed in a future release
+    if ('' == locate_template($templates, true)) {
+        load_template(ABSPATH . WPINC . '/theme-compat/missing_content.php');
+    }
+}
