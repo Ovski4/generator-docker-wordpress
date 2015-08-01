@@ -36,22 +36,14 @@ var questions = {
             name: 'databaseRootPassword',
             message: 'Your database root password',
             validate: notEmpty
-        }
-    ],
-    theme: {
-        before: {
-            type: 'confirm',
-            name: 'theme',
-            message: 'Do you want to generate a theme? (style.css, header.php, index.php and footer.php)',
-            default: false
         },
-        after: {
+        {
             type: 'input',
             name: 'themeName',
             message: 'Your theme name',
             validate: notEmpty
         }
-    }
+    ]
 };
 
 module.exports = questions;
