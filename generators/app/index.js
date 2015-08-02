@@ -1,7 +1,8 @@
 var generators      = require('yeoman-generator'),
     path            = require('path'),
     questions       = require('./questions'),
-    TemplateManager = require('./templateManager')
+    TemplateManager = require('./templateManager'),
+    MessageManager  = require('./messageManager')
 ;
 var fs = require('fs');
 var configuration = {} ;
@@ -9,7 +10,7 @@ var configuration = {} ;
 module.exports = generators.Base.extend({
     prompting: function () {
         var done = this.async();
-        this.prompt(questions.general, function (answers) {
+        this.prompt(questions, function (answers) {
             configuration = configure(answers);
             done();
         }.bind(this));

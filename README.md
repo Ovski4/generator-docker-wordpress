@@ -35,4 +35,6 @@ elk data is located in /var/docker/elk/projectname on your machine
 TODO
 ----
 
-Add foundation if "Yes" on prompt (new question)
+Check how to log with nice colors
+Generate a makefile question
+check kibana imports
