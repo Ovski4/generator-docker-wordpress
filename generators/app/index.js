@@ -27,11 +27,8 @@ module.exports = generators.Base.extend({
         }.bind(this));
     },
     end: function () {
-        if (configuration.gulp == true) {
-            console.log('Now you can run ./run.sh, then you should exec in your container and run npm update to finish');
-        } else {
-            console.log('Now you can run ./run.sh');
-        }
+        var mm = new MessageManager(configuration);
+        console.log(mm.getEndMessage());
     }
 });
 
