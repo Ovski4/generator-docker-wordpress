@@ -1,5 +1,4 @@
 var generators      = require('yeoman-generator'),
-    path            = require('path'),
     questions       = require('./questions'),
     TemplateManager = require('./utils/templateManager'),
     MessageManager  = require('./utils/messageManager'),
