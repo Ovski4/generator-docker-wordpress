@@ -17,6 +17,7 @@ templateManager.prototype.copyTemplates = function () {
     this.copyTemplate('docker-compose.yml.tmpl', 'docker-compose.yml');
     this.copyTemplate('run.sh.tmpl', 'run.sh');
     this.copyTemplate('kibana.json.tmpl', 'kibana.json');
+    this.copyTemplate('.gitignore.tmpl', '.gitignore');
     this.copyTemplate('theme/footer.php.tmpl', themeRoot+'/footer.php');
     this.copyTemplate('theme/functions.php.tmpl', themeRoot+'/functions.php');
     this.copyTemplate('theme/header.php.tmpl', themeRoot+'/header.php');
