@@ -14,9 +14,10 @@ Configurator.prototype.handle = function (configuration) {
     configuration.prefix      = process.cwd().split(path.sep).pop().replace(/[^\w\s]/gi, '').toLowerCase();
     configuration.projectName = configuration.projectName.toLowerCase();
     configuration.ports = {
-        app:     this.getRandomInteger(8000, 8033),
-        elk:     this.getRandomInteger(8034, 8066),
-        adminer: this.getRandomInteger(8067, 8099)
+        app:        this.getRandomInteger(8000, 8033),
+        elk:        this.getRandomInteger(8034, 8066),
+        adminer:    this.getRandomInteger(8067, 8099),
+        livereload: this.getRandomInteger(35700, 35799)
     };
 
     return configuration;

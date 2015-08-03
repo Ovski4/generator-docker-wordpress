@@ -14,7 +14,7 @@ app:
    - mysql:mysql
   ports:
    - <%= conf.ports.app %>:80
-<% if (conf.gulp) { %>   - 35729:35729<% } %>
+<% if (conf.gulp) { %>   - <%= conf.ports.livereload %>:35729<% } %>
   environment:
    - VIRTUAL_HOST=dev.<%= conf.projectName %>.fr
 adminer:
