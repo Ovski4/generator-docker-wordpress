@@ -1,17 +1,20 @@
 var generators      = require('yeoman-generator'),
-    path            = require('path'),
     questions       = require('./questions'),
-    TemplateManager = require('./templateManager'),
-    MessageManager  = require('./messageManager')
+    TemplateManager = require('./utils/templateManager'),
+    MessageManager  = require('./utils/messageManager'),
+    Configurator    = require('./utils/configurator')
 ;
-var fs = require('fs');
+
 var configuration = {} ;
 
 module.exports = generators.Base.extend({
+    initializing: function () {
+        this.log(MessageManager.getStartMessage());
+    },
     prompting: function () {
         var done = this.async();
         this.prompt(questions, function (answers) {
-            configuration = configure(answers);
+            configuration = Configurator.handle(answers);
             done();
         }.bind(this));
     },
@@ -29,14 +32,6 @@ module.exports = generators.Base.extend({
     },
     end: function () {
         var mm = new MessageManager(configuration);
-        console.log(mm.getEndMessage());
+        this.log(mm.getEndMessage());
     }
 });
-
-var configure = function(configuration) {
-    // remove extra characters from project name for the elk container name with docker-compose (used in run.sh.tmpl)
-    configuration.prefix      = process.cwd().split(path.sep).pop().replace(/[^\w\s]/gi, '').toLowerCase();
-    configuration.projectName = configuration.projectName.toLowerCase();
-
-    return configuration;
-};

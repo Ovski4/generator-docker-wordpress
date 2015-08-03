@@ -13,7 +13,7 @@ app:
    - elk:syslog_server
    - mysql:mysql
   ports:
-   - 8073:80
+   - <%= conf.ports.app %>:80
 <% if (conf.gulp) { %>   - 35729:35729<% } %>
   environment:
    - VIRTUAL_HOST=dev.<%= conf.projectName %>.fr
@@ -22,7 +22,7 @@ adminer:
   environment:
    - VIRTUAL_HOST=dev.adminer.<%= conf.projectName %>.fr
   ports:
-   - 8059:80
+   - <%= conf.ports.adminer %>:80
   links:
    - mysql:mysql
 elk:
@@ -32,4 +32,4 @@ elk:
   volumes:
    - /var/docker/elk/<%= conf.projectName %>:/data
   ports:
-    - 8001:80
+    - <%= conf.ports.elk %>:80

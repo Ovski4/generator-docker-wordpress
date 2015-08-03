@@ -1,9 +1,9 @@
-var templateManager = function (generator, conf) {
+var TemplateManager = function (generator, conf) {
     this.conf = conf;
     this.generator = generator;
 };
 
-templateManager.prototype.copyTemplate = function (source, dest) {
+TemplateManager.prototype.copyTemplate = function (source, dest) {
     this.generator.fs.copyTpl(
         this.generator.templatePath(source),
         this.generator.destinationPath(dest),
@@ -11,7 +11,7 @@ templateManager.prototype.copyTemplate = function (source, dest) {
     );
 };
 
-templateManager.prototype.copyTemplates = function () {
+TemplateManager.prototype.copyTemplates = function () {
     var themeRoot = 'wordpress/wp-content/themes/'+this.conf.themeName;
     this.copyTemplate('wp-config.php.tmpl', 'wordpress/wp-config.php');
     this.copyTemplate('docker-compose.yml.tmpl', 'docker-compose.yml');
@@ -32,6 +32,9 @@ templateManager.prototype.copyTemplates = function () {
     if (this.conf.foundation == true) {
         this.copyTemplate('bower.json.tmpl', 'bower.json');
     }
+    if (this.conf.makefile == true) {
+        this.copyTemplate('Makefile.tmpl', 'Makefile');
+    }
 };
 
-module.exports = templateManager;
+module.exports = TemplateManager;
