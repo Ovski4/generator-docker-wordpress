@@ -1,11 +1,14 @@
 {
   "name": "generator-docker-wordpress",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A generator to get started super quickly on a wordpess project, with sass and livereload feature",
-  "files": [],
+  "files": [
+    "generators"
+  ],
   "keywords": [
     "yeoman-generator"
   ],
+  "main": "generators/app/index.js",
   "dependencies": {
     "yeoman-generator": "^0.20.2"
   }
